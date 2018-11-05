@@ -19,6 +19,7 @@ namespace OnlineShoppingServices
     {
         public Startup(IConfiguration configuration)
         {
+            int x = 10;
             Configuration = configuration;
         }
 
