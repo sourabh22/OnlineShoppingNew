@@ -1,0 +1,41 @@
+﻿@using OnlineShoppingApplication.Models;
+@model ProductViewModel
+
+@{
+
+    ViewData["Title"] = "GetProducts";
+
+    var productList = (List<ProductViewModel>)ViewData["products"];
+}
+
+
+@foreach (var p in productList)
+{
+    <div>
+
+
+        <form asp-action="AddToCart" asp-controller="Product" method="post">
+            <input type="hidden" name="ProductId" value="@p.ProductId" />
+            <div class="panel panel-default">
+                <label>@p.Title</label> <input type="hidden" name="Title" value="@p.Title" />
+            </div>
+            <img  src="@p.Image" class="img-fluid img-thumbnail img-circle mx-auto d-block" style="width:120px;height:170px ; ">
+            <label>@p.Price</label> <input type="hidden" name="Price" value="@p.Price" />
+            <label>@p.CategoryId  </label>  <input type="hidden" name="CategoryId" value="@p.CategoryId" />
+            <label>@p.SubCategoryId </label>  <input type="hidden" name="SubCategoryId" value="@p.SubCategoryId" />
+
+
+            <input type="submit" value="Add to Cart" id="btnCart" />
+        </form>
+
+    </div>
+}
+@section Scripts
+    {
+    <script>
+        $('#btnCart').click(function () {
+
+            alert("Added to cart.");
+        });
+    </script>
+}

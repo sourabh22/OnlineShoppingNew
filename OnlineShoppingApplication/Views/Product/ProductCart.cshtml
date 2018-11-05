@@ -1,0 +1,53 @@
+﻿@using OnlineShoppingApplication.Models;
+
+@model IEnumerable<ProductViewModelCart>
+
+
+@{
+    ViewData["Title"] = "ProductCart";
+    var list = (List<ProductViewModelCart>)ViewData["products"];
+}
+
+<h2>ProductCart</h2>
+<form asp-action="ProcessOrder" asp-controller="Product" method="post">
+    @for(var i=0;i<list.Count;i++)
+    {
+    <div>
+        <input type="hidden" name="[@i].ProductId" value="@list[i].ProductId" />
+        
+        <label>@list[i].Title</label> <input type="hidden" name="[@i].Title" value="@list[i].Title" />
+        <label>@list[i].Price</label> <input type="hidden" name="[@i].Price" value="@list[i].Price" />
+        <label>@list[i].CategoryId  </label>  <input type="hidden" name="[@i].CategoryId" value="@list[i].CategoryId" />
+        <label>@list[i].SubCategoryId </label>  <input type="hidden" name="[@i].SubCategoryId" value="@list[i].SubCategoryId" />
+        <select name="[@i].Quantity">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <button class="btn btn-success" id="btnCart">Remove</button>
+
+
+    </div>
+
+    }
+    <div>
+          <input type="submit" value="Place Order"/>
+    </div>
+</form>
+
+    @section Scripts
+        {
+        <script>
+            $('button').click(function (e) {
+                $(e.target).closest('div').remove();
+                e.preventDefault();
+            });
+        </script>
+    }
+
+
+
+
+

@@ -1,0 +1,84 @@
+﻿
+@using OnlineShoppingServices.Models.DB
+
+@model Customer
+
+@{
+    ViewData["Title"] = "signup";
+}
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+@*<form asp-action="signup" asp-controller="Admin" method="post">
+        <label>UserName</label>
+        <br />
+        <input asp-for="Name" />
+        <br />
+        <label>Email</label>
+        <br />
+        <input asp-for="Email" />
+        <br />
+        <label>Password</label>
+        <br />
+        <input asp-for="Password" />
+        <br />
+        <label>Phone</label>
+        <br />
+        <input asp-for="Phone" />
+        <br />
+        <label>Address</label>
+        <br />
+        <input asp-for="Address" />
+        <br />
+        <input type="submit" value="Submit" />
+    </form>*@
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="panel panel-info">
+                    
+                    <div class="panel-heading">
+                    <strong><h3 class="text-center">Welcome for Sign-up</h3></strong> 
+                    </div>
+                    
+                    <div class="panel-body">
+                        <form asp-action="signup" asp-controller="Admin" method="post">
+                            <div class="form-group">
+                                <label for="fname">First Name</label>
+                                <input type="text"  class="form-control" asp-for="Name" placeholder="Enter Your Name" autofocus required >
+                            </div>
+                            <div class="form-group">
+                                <label for="lname">Email</label>
+                                <input type="Email"  class="form-control" asp-for="Email" placeholder="Enter Your Email" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="gender">Password</label>
+                                <input type="password"  class="form-control" asp-for="Password" placeholder="Create Password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="emailaddr">Address</label>
+                                <input type="text"  class="form-control" asp-for="Address " placeholder="Enter Your Address" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Contact-Number</label>
+                                <input type="password"  class="form-control" asp-for="Phone " placeholder="Enter Phone" required>
+                            </div>
+
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-primary btn-lg" value="submit">Sign up!</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  
+

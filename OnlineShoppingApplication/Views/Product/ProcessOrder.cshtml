@@ -1,0 +1,166 @@
+﻿
+@{
+    ViewData["Title"] = "ProcessOrder";
+    var list = (List<ProductViewModelCart>)ViewData["products"];
+
+    decimal sum = 0;
+    int sum1 = 0;
+}
+
+<h2>ProcessOrder</h2>
+<form asp-action="ProcessToPay" asp-controller="Product" method="post">
+
+
+
+
+    <table class="table">
+
+
+            <thead class="thead-dark">
+                <tr>
+
+                    <th scope="col">ProductName</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+
+                </tr>
+            </thead>
+            @for (var i = 0; i < list.Count; i++)
+            {
+                sum += list[i].Price;
+                sum1 += list[i].Quantity;
+                <tbody>
+                    <tr>
+                        <td>
+                            <label>@list[i].Title</label> <input type="hidden" name="[@i].Title" value="@list[i].Title" />
+                        </td>
+                        <td>
+                            <label>@list[i].Price</label> <input type="hidden" name="[@i].Price" value="@list[i].Price" />
+                        </td>
+                        <td><label>@list[i].Quantity</label></td>
+                        <td><button class="btn btn-success" id="btnCart">Cancle-Order</button></td>
+
+                    </tr>
+                </tbody>
+
+            }
+            <tfoot>
+                <tr>
+                    <td>Total</td>
+                    <td>@sum</td>
+                    <td>@sum1</td>
+                </tr>
+            </tfoot>
+        </table>
+
+
+
+
+    <div class="container">
+        <h2>Pay-Now</h2>
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                Payment-Method
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li class="dropdown-header">Add-Method</li>
+               
+                <li><a asp-action="ProcessToPay" asp-controller="Product"asp-route-paymode="DC">Debit-Card</a></li>
+                <li><a asp-action="ProcessToPay" asp-controller="Product"asp-route-paymode="CC">Credit-Card</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Other-Methods</li>
+                <li><a asp-action="COD" asp-controller="Product" asp-route-paymode="cod">COD</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+    @*<div>
+            <input type="submit" value="Payment" />
+        </div>*@
+</form>
+
+
+@section Scripts
+    {
+    <script>
+            $('button').click(function (e) {
+                $(e.target).closest('tbody').remove();
+                e.preventDefault();
+            });
+    </script>
+}
+
+
+    @*<div class="container">
+        <div class="row">
+            <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <address>
+                            <strong>Elf Cafe</strong>
+                            <br>
+                            2135 Sunset Blvd
+                            <br>
+                            Los Angeles, CA 90026
+                            <br>
+                            <abbr title="Phone">P:</abbr> (213) 484-6829
+                        </address>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6 text-right">
+                        <p>
+                            <em>Date: 1st November, 2013</em>
+                        </p>
+                        <p>
+                            <em>Receipt #: 34522677W</em>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="text-center">
+                        <h1>Receipt</h1>
+                    </div>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th class="text-center">Quantity</th>
+                                <th class="text-center">Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (var i = 0; i < list.Count; i++)
+                            {
+                                sum += list[i].Price;
+                                sum1 += list[i].Quantity;
+                            <tr>
+                                <td>
+                                    <label>@list[i].Title</label> <input type="hidden" name="[@i].Title" value="@list[i].Title" />
+                                </td>
+                                <td><label>@list[i].Quantity</label></td>
+                                <td>
+                                    <label>@list[i].Price</label> <input type="hidden" name="[@i].Price" value="@list[i].Price" />
+                                </td>
+                            </tr>
+                            }
+                            <tr>
+                                <td>   </td>
+                                <td>   </td>
+                                
+                              
+                            </tr>
+                            <tr>
+                                <td>   </td>
+                                <td>   </td>
+                                <td class="text-right"><h4><strong>Total: </strong></h4></td>
+                                <td class="text-center text-danger"><h4><strong>@sum</strong></h4></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button type="button" class="btn btn-success btn-lg btn-block">
+                        Pay Now   <span class="glyphicon glyphicon-chevron-right"></span>
+                    </button>
+                </div>
+            </div>
+        </div>*@
