@@ -1,20 +1,22 @@
 ﻿
-
-
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using Newtonsoft.Json;
 using OnlineShoppingApplication.Models;
+using OnlineShoppingLibrary;
+using OnlineShoppingServices.Models;
 using OnlineShoppingServices.Models.DB;
 using System.Collections.Generic;
 using System.Linq;
+using SearchService = OnlineShoppingApplication.Models.SearchService;
 
 namespace OnlineShoppingApplication.Controllers
 {  
     public class ProductController : Controller
     {
         SearchService searchService;
+
 
         public ProductController()
     {
@@ -79,12 +81,15 @@ namespace OnlineShoppingApplication.Controllers
         }
         public IActionResult COD(ProductViewModelCart[] products)
         {
-
-
             searchService.context = HttpContext;
             var result = searchService.ProductCart();
             ViewData["products"] = result;
             return View(result);
+      
+        }
+        public IActionResult OrderView()
+        {
+            return View();
         }
     }
 

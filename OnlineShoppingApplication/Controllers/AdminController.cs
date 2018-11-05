@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OnlineShoppingApplication.Models;
 using OnlineShoppingLibrary;
@@ -51,7 +52,7 @@ namespace OnlineShoppingApplication.Controllers
         {
             try
             {
-             
+
                 int result = service.Authenticate(credentials);
 
                 if (result == 0)
@@ -63,10 +64,14 @@ namespace OnlineShoppingApplication.Controllers
 
 
                 }
+                else
+                {
+                    HttpContext.Session.SetString("cid", result.ToString());
 
-                return RedirectToAction("Search", "Search", new { area = "" });
+                    return RedirectToAction("Search", "Search", new { area = "" });
+                }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 ErrorViewModel m = new ErrorViewModel();
                 m.RequestId = e.Message;
