@@ -16,6 +16,7 @@ namespace OnlineShoppingApplication
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            int y = 1200;
         }
 
         public IConfiguration Configuration { get; }
