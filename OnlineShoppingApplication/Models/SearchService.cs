@@ -1,5 +1,6 @@
 ﻿
 
+
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using OnlineShoppingLibrary;
@@ -13,10 +14,10 @@ using System.Threading.Tasks;
 using Category = OnlineShoppingServices.Models.DB.Category;
 
 namespace OnlineShoppingApplication.Models
-{
+{          
            public class SearchService
            {
-
+          SearchService service;
            public HttpContext context;
            HttpClient client;
            public SearchService()
@@ -83,11 +84,9 @@ namespace OnlineShoppingApplication.Models
         }
 
         [ErrorFilter]
-
         public List<ProductViewModelCart> ProductCart()
-    
-            {
-
+        {
+ 
            // List<ProductViewModelCart> serializedObjects;
             string json = "";
             byte[] ary;
@@ -97,15 +96,17 @@ namespace OnlineShoppingApplication.Models
            
         List<ProductViewModelCart> list = JsonConvert.DeserializeObject<List<ProductViewModelCart>>(json);
 
-           List<ProductViewModelCart> result = (from c in list select new ProductViewModelCart() {
-                 CategoryId=c.CategoryId,
-                 Price=c.Price,
-                 ProductId=c.ProductId,
-                 Quantity =c.Quantity,
-                 SubCategoryId=c.SubCategoryId,
-                 Title=c.Title,
-               Image = c.Image
-           }).ToList();
+            List<ProductViewModelCart> result = (from c in list
+                                                 select new ProductViewModelCart()
+                                                 {
+                                                     CategoryId = c.CategoryId,
+                                                     Price = c.Price,
+                                                     ProductId = c.ProductId,
+                                                     Quantity = c.Quantity,
+                                                     SubCategoryId = c.SubCategoryId,
+                                                     Title = c.Title,
+                                                     Image = c.Image
+                                                 }).ToList();
 
             return result;
         }
@@ -136,7 +137,6 @@ namespace OnlineShoppingApplication.Models
             return result;
         }
         public List<ProductViewModelCart> COD()
-
         {
 
             string json = "";
@@ -160,6 +160,11 @@ namespace OnlineShoppingApplication.Models
                                                  }).ToList();
 
             return result;
+        }
+        public int saveDetails(string paymode,ProductViewModelCart[] p)
+        {
+           
+            return 1;
         }
     } 
 

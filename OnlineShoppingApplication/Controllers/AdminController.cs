@@ -38,7 +38,7 @@ namespace OnlineShoppingApplication.Controllers
         public ActionResult Signup(Customer customer)
         {
            service.SignUp(customer);
-            return View("SignUpSucecss");
+            return View("SignUpSuccess");
         }
         
         public IActionResult Authenticate()

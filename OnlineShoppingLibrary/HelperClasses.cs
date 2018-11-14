@@ -18,10 +18,11 @@ namespace OnlineShoppingLibrary
     {
         public int Quantity { get; set; }
     }
-    public class Orderview
+    public class OrderFinalDetails
     {
-        public ProductViewModelCart[] PVMC { get; set; }
+        public ProductViewModelCart[] Products { get; set; }
         public int Cid { get; set; }
         public int TotalAmount { get; set; }
+        public string PaymentMode { get; set; }
     }
 }

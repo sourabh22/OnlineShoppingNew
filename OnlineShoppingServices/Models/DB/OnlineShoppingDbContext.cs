@@ -74,8 +74,6 @@ namespace OnlineShoppingServices.Models.DB
 
                 entity.ToTable("orderdetails");
 
-                entity.Property(e => e.OrderId).ValueGeneratedOnAdd();
-
                 entity.Property(e => e.Price).HasColumnType("money");
 
                 entity.HasOne(d => d.Order)
@@ -107,6 +105,8 @@ namespace OnlineShoppingServices.Models.DB
 
             modelBuilder.Entity<Payment>(entity =>
             {
+                entity.HasKey(e => e.InvoiceId);
+
                 entity.ToTable("payment");
 
                 entity.Property(e => e.Amount).HasColumnType("money");

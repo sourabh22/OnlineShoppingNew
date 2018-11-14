@@ -1,12 +1,12 @@
-﻿@using OnlineShoppingApplication.Models;
+﻿@using OnlineShoppingLibrary;
 
-@model IEnumerable<ProductViewModelCart>
 @{
     ViewData["Title"] = "products";
-    var list = (List<ProductViewModelCart>)ViewData["products"];
+    var list = (ProductViewModelCart[])ViewData["products"];
 
     decimal sum = 0;
     int sum1 = 0;
+    decimal price1 = 0;
 }
 
 <h2>COD</h2>
@@ -29,7 +29,7 @@
                 <div class="col-xs-6 col-sm-6 col-md-6 text-right">
                     <p id="demo"></p>
                     <p>
-                        <em>Receipt #: 34522677W</em>
+                        <em>InVoice-No. #: @ViewData["invoiceNo"]</em>
                     </p>
                 </div>
             </div>
@@ -46,8 +46,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @for (var i = 0; i < list.Count; i++)
+                        @for (var i = 0; i < list.Length; i++)
                         {
+                            price1 = list[i].Price * list[i].Quantity;
                             sum += list[i].Price;
                             sum1 += list[i].Quantity;
                             <tr>
@@ -56,7 +57,7 @@
                                 </td>
                                 <td><label>@list[i].Quantity</label></td>
                                 <td>
-                                    <label>@list[i].Price</label> <input type="hidden" name="[@i].Price" value="@list[i].Price" />
+                                    <label>@price1</label> <input type="hidden" name="[@i].Price" value="@list[i].Price" />
                                 </td>
                             </tr>
                         }
@@ -83,9 +84,7 @@
 
                     </tbody>
                 </table>
-                <button type="button" class="btn btn-success btn-lg btn-block">
-                    Order Now   <span class="glyphicon glyphicon-chevron-right"></span>
-                </button>
+
             </div>
         </div>
     </div>

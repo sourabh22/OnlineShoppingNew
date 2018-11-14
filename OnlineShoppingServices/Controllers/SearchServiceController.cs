@@ -16,11 +16,11 @@ namespace OnlineShoppingService.Controllers
 
 
 
-    public class SearchController : ControllerBase
+    public class SearchServiceController : ControllerBase
     {
         SearchService service;
         OnlineShoppingDbContext context;
-        public SearchController(OnlineShoppingDbContext context)
+        public SearchServiceController(OnlineShoppingDbContext context)
         {
             this.context = context;
             service = new SearchService(this.context);

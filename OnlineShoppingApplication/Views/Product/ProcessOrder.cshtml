@@ -1,4 +1,4 @@
-﻿
+﻿@using OnlineShoppingLibrary;
 @{
     ViewData["Title"] = "ProcessOrder";
     var list = (List<ProductViewModelCart>)ViewData["products"];
@@ -70,7 +70,7 @@
                 <li><a asp-action="ProcessToPay" asp-controller="Product"asp-route-paymode="CC">Credit-Card</a></li>
                 <li class="divider"></li>
                 <li class="dropdown-header">Other-Methods</li>
-                <li><a asp-action="COD" asp-controller="Product" asp-route-paymode="cod">COD</a></li>
+                <li><a asp-action="COD" asp-controller="Product" asp-route-paymode="COD">COD</a></li>
             </ul>
         </div>
     </div>

@@ -9,6 +9,7 @@ using OnlineShoppingServices.Models;
 using OnlineShoppingServices.Models.DB;
 using System.Collections.Generic;
 using System.Linq;
+
 using SearchService = OnlineShoppingApplication.Models.SearchService;
 
 namespace OnlineShoppingApplication.Controllers
@@ -65,7 +66,7 @@ namespace OnlineShoppingApplication.Controllers
         public IActionResult ProcessOrder(ProductViewModelCart[] products)
         {
             searchService.context = HttpContext;
-
+            
             HttpContext.Session.Remove("CatSubCat");
             HttpContext.Session.Remove("Cart");
             string json = JsonConvert.SerializeObject(products);
@@ -79,14 +80,21 @@ namespace OnlineShoppingApplication.Controllers
         {
             return View();
         }
-        public IActionResult COD(ProductViewModelCart[] products)
+        public IActionResult COD(string paymode)
         {
+            int InvoiceNo;
             searchService.context = HttpContext;
-            var result = searchService.ProductCart();
-            ViewData["products"] = result;
-            return View(result);
+            ProductService svc = new ProductService();
+            svc.context = HttpContext;
+           var array= svc.GetOrderDetails(paymode,out InvoiceNo);
+
+            //searchService.saveDetails(paymode,result);
+            ViewData["products"] = array;
+            ViewData["invoiceNo"] = InvoiceNo;
+            return View();
       
         }
+        
         public IActionResult OrderView()
         {
             return View();

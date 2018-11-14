@@ -27,6 +27,7 @@ namespace OnlineShoppingServices.Controllers
         {
             service = new AdminService();
             int result = service.SignUp(customer);
+
             return Ok(result);
         }
 
