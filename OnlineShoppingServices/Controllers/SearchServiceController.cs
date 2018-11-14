@@ -7,7 +7,7 @@ using OnlineShoppingServices.Models.DB;
 using OnlineShoppingServices.Models;
 using OnlineShoppingServices.Components;
 
-namespace OnlineShoppingService.Controllers
+namespace OnlineShoppingServices.Controllers
 {
    //[Route("api/[controller]")]
     
@@ -50,9 +50,10 @@ namespace OnlineShoppingService.Controllers
 
         [HttpPost]
         [Route("GetProducts")]
-        public List<Product> GetProducts(Subcategory subCategory)
+        public IActionResult GetProducts(Subcategory subCategory)
         {
-            return service.GetProducts(subCategory);
+            var result = service.GetProducts(subCategory);
+            return Ok(result);
         }
 
 

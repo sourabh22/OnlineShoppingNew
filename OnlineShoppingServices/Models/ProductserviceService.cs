@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace OnlineShoppingServices.Models
 {
-    public class ProductserviceService
+    public class ProductserviceController
     {
            OnlineShoppingDbContext context;
-        public ProductserviceService()
+        public ProductserviceController()
         {
             context = new OnlineShoppingDbContext();
         }
@@ -52,6 +52,13 @@ namespace OnlineShoppingServices.Models
              };
 
             context.Payment.Add(payment);
+            Product p;
+            for(int i=0;i<details.Products.Length;i++)
+            {
+                p=context.Product.SingleOrDefault(c => c.ProductId==details.Products[i].ProductId);
+                p.Quantity -= details.Products[i].Quantity;
+            }
+            
             context.SaveChanges();
             return payment.InvoiceId;
 

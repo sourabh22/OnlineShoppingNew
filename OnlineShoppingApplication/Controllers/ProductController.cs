@@ -7,6 +7,7 @@ using OnlineShoppingApplication.Models;
 using OnlineShoppingLibrary;
 using OnlineShoppingServices.Models;
 using OnlineShoppingServices.Models.DB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -88,9 +89,15 @@ namespace OnlineShoppingApplication.Controllers
             svc.context = HttpContext;
            var array= svc.GetOrderDetails(paymode,out InvoiceNo);
 
+
+            string cid = HttpContext.Session.GetString("cid");
+            int customerid = Convert.ToInt32(cid);
+            List<Customer> c = svc.Getaddress(customerid);
+           
             //searchService.saveDetails(paymode,result);
             ViewData["products"] = array;
             ViewData["invoiceNo"] = InvoiceNo;
+            ViewData["address"] = c;
             return View();
       
         }

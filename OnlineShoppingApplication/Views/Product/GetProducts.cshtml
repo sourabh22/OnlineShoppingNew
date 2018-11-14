@@ -15,17 +15,19 @@
 
 
         <form asp-action="AddToCart" asp-controller="Product" method="post">
-         <div class="col-sm-4">
+         <div class="col-sm-6">
                 <div class="row">
 
                     <div class="col-sm-6">
                         <div class="card">
                             <div class="card-body">
                                 <input type="hidden" name="ProductId" value="@p.ProductId" />
-                                <label>@p.Title</label> <input type="hidden" name="Title" value="@p.Title" />
+                                <img src="@p.Image" alt="Denim Jeans" style="width:100%">
+                                <h1>@p.Title</h1> <input type="hidden" name="Title" value="@p.Title" />
+                                <h4>Rs.@p.Price</h4><input type="hidden" name="Price" value="@p.Price" />
 
-                                <img src="@p.Image" class="img-fluid img-thumbnail img-circle mx-auto d-block" style="width:120px;height:170px ; ">
-                                <label>@p.Price</label> <input type="hidden" name="Price" value="@p.Price" />
+                              
+                            
                                 <label>@p.CategoryId  </label>  <input type="hidden" name="CategoryId" value="@p.CategoryId" />
                                 <label>@p.SubCategoryId </label>  <input type="hidden" name="SubCategoryId" value="@p.SubCategoryId" />
 
@@ -34,9 +36,11 @@
                             </div>
                         </div>
                     </div>
+                    <br />
                 </div>
-
+             <br >
             </div>
+            
 
         </form>
     </div>

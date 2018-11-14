@@ -1,7 +1,8 @@
 ﻿@using OnlineShoppingLibrary;
-
+@using OnlineShoppingServices.Models.DB;
 @{
     ViewData["Title"] = "products";
+    var list1 = (List<Customer>)ViewData["address"];
     var list = (ProductViewModelCart[])ViewData["products"];
 
     decimal sum = 0;
@@ -17,13 +18,19 @@
             <div class="row">
                 <div class="col-xs-6 col-sm-6 col-md-6">
                     <address>
-                        <strong>Elf Cafe</strong>
-                        <br>
-                        2135 Sunset Blvd
-                        <br>
-                        Los Angeles, CA 90026
-                        <br>
-                        <abbr title="Phone">P:</abbr> (213) 484-6829
+                        @foreach (var a in list1)
+                        {  
+                           <strong>Dear @a.Name</strong>
+                           <br>
+                            <strong>@a.Address</strong>
+                            <br>
+                            <strong>@a.Phone</strong>
+                        }
+
+
+
+
+
                     </address>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6 text-right">
@@ -49,7 +56,7 @@
                         @for (var i = 0; i < list.Length; i++)
                         {
                             price1 = list[i].Price * list[i].Quantity;
-                            sum += list[i].Price;
+                            sum += price1;
                             sum1 += list[i].Quantity;
                             <tr>
                                 <td>

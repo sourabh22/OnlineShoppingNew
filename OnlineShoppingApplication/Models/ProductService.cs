@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using OnlineShoppingLibrary;
+using OnlineShoppingServices.Models.DB;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,12 @@ namespace OnlineShoppingApplication.Models
 {
     public class ProductService
     {
+        OnlineShoppingDbContext context1;
         public HttpContext context;
         HttpClient client;
         public ProductService()
         {
+            context1 = new OnlineShoppingDbContext();
             client = new HttpClient();
             client.BaseAddress = new Uri("http://localhost:65141/");
         }
@@ -48,5 +51,14 @@ namespace OnlineShoppingApplication.Models
             }
             return result; // product array
         }
+
+
+        public List<Customer> Getaddress(int cid)
+        {
+            var result = (from c in context1.Customer where c.CustomerId == cid select c).ToList();
+            return result;
+        }
+
+
     }
 }
