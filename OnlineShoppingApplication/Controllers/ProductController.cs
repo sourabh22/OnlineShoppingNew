@@ -101,7 +101,27 @@ namespace OnlineShoppingApplication.Controllers
             return View();
       
         }
-        
+        public IActionResult Remove(int pid)
+        {
+            string json;
+            searchService.context = HttpContext;
+            List<ProductViewModelCart> products = searchService.ProductCart();
+            // json=HttpContext.Session.GetString("Cart");
+            //List<ProductViewModel> products = JsonConvert.DeserializeObject<List<ProductViewModel>>(json);
+            for(int i=0;i<products.Count;i++)
+            {
+                if(products[i].ProductId==pid)
+                {
+                    products.RemoveAt(i);
+                    break;
+                }
+             
+            }
+            json = JsonConvert.SerializeObject(products);
+            HttpContext.Session.SetString("Cart", json);
+            ViewData["products"]= products;
+            return View("ProductCart");
+        }
         public IActionResult OrderView()
         {
             return View();

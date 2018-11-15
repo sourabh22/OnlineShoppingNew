@@ -5,7 +5,7 @@
     ViewData["Title"] = "Category";
 }
 
-<h2>Select Your Product...</h2>
+<h2>Search Your Product...<span class="glyphicon glyphicon-search"></span></h2>
 <br />
 <br />
 @{
@@ -19,13 +19,13 @@
 
                 <div class="col-md-4">
 
-                    <select asp-items="@categories" name="CategoryId" id="selCategory" class="btn btn-primary dropdown-toggle">
+                    <select asp-items="@categories" name="CategoryId" id="selCategory" class="btn btn-primary dropdown-toggle" required>
                         <option value="" selected disabled>--Select a Category--</option>
                     </select>
                 </div>
                 <div class="col-md-4">
 
-                    <select name="SubCategoryId" id="selSubCategory" class="btn btn-primary dropdown-toggle">
+                    <select name="SubCategoryId" id="selSubCategory" class="btn btn-primary dropdown-toggle" required>
                         <option value="Subcategory">--Select a SubCategory--</option>
                     </select>
 
@@ -41,7 +41,12 @@
     </div>
    
 </div>
-
+<br /><br /><br /><br /><br /><br /><br /><br />
+<div>
+    <marquee behavior="scroll" direction="left">
+        <img src="https://www.vistaridgeumc.org/wp-content/uploads/sites/137/2016/12/welcome-865x454.png" alt="Swimming fish" style="width:600px; height:200px">
+    </marquee>
+</div>
 @section Scripts {
     <script>
         /*

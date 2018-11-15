@@ -10,7 +10,7 @@
 
 <h2>ProductCart</h2>
 <form asp-action="ProcessOrder" asp-controller="Product" method="post">
-    @for(var i=0;i<list.Count;i++)
+    @for (var i = 0; i < list.Count; i++)
     {
     <div>
         <input type="hidden" name="[@i].ProductId" value="@list[i].ProductId" />
@@ -21,28 +21,32 @@
         @*<label>@list[i].CategoryId  </label>*@  <input type="hidden" name="[@i].CategoryId" value="@list[i].CategoryId" />
         @*<label>@list[i].SubCategoryId </label>*@  <input type="hidden" name="[@i].SubCategoryId" value="@list[i].SubCategoryId" />
 
-        <div>
-            <select name="[@i].Quantity" class="btn btn-primary dropdown-toggle">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>      |
+                                                    <div>
+                                                        <select name="[@i].Quantity" class="btn btn-primary dropdown-toggle">
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                        </select>      |
+                                                    </div>
 
+        <br>
+        <a class="btn btn-danger" asp-action="Remove" asp-controller="Product" asp-route-pid="@list[i].ProductId">Remove</a>
 
-        </div><br >
-        <button class="btn btn-danger" id="btnCart">Remove</button>
 
     </div>
-    <br >
+
+
+        <br>
     }
+    
     <div>
-          <input type="submit" value="Place Order" class="btn btn-success"/>
+        <input type="submit" value="Place Order" class="btn btn-success" />
     </div>
 </form>
 
-    @section Scripts
+    @*@section Scripts
         {
         <script>
             $('button').click(function (e) {
@@ -50,7 +54,7 @@
                 e.preventDefault();
             });
         </script>
-    }
+    }*@
 
 
 

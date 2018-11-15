@@ -8,8 +8,11 @@ body {
 }
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
- 
-
+.table1 {
+    border-top: 2px;
+    border: 2px solid #ddd;
+    border-color: black;
+}
 /* Carousel */
 .carousel-caption p {
     font-size: 20px;
