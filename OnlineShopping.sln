@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineShoppingServices", "O
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineShoppingTest", "OnlineShoppingTest\OnlineShoppingTest.csproj", "{27A256D6-FC4B-4242-93CC-7DF369911C67}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "OnlineDbProject", "OnlineDbProject\OnlineDbProject.sqlproj", "{C4F8B40B-18E9-42A7-9B19-25C09DA9ED13}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,12 @@ Global
 		{27A256D6-FC4B-4242-93CC-7DF369911C67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27A256D6-FC4B-4242-93CC-7DF369911C67}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27A256D6-FC4B-4242-93CC-7DF369911C67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4F8B40B-18E9-42A7-9B19-25C09DA9ED13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4F8B40B-18E9-42A7-9B19-25C09DA9ED13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4F8B40B-18E9-42A7-9B19-25C09DA9ED13}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{C4F8B40B-18E9-42A7-9B19-25C09DA9ED13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4F8B40B-18E9-42A7-9B19-25C09DA9ED13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4F8B40B-18E9-42A7-9B19-25C09DA9ED13}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

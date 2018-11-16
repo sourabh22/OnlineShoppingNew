@@ -13,6 +13,7 @@ namespace OnlineShoppingServices.Controllers
     [ApiController]
     public class ProductServiceController : ControllerBase
     {
+    
         ProductserviceController service;
         [Route("PlaceOrder")]
         public IActionResult PlaceOrder(OrderFinalDetails details)
@@ -21,5 +22,7 @@ namespace OnlineShoppingServices.Controllers
            int invoiceId= service.PlaceOrder(details);
             return Ok(invoiceId);
         }
+
+       
     }
 }

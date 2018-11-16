@@ -1,17 +1,14 @@
 ﻿@using OnlineShoppingServices.Models.DB;
-
 @model Subcategory
 @{
     ViewData["Title"] = "Category";
 }
-
 <h2>Search Your Product...<span class="glyphicon glyphicon-search"></span></h2>
 <br />
 <br />
 @{
     var categories = (SelectList)ViewBag.categories;
 }
-
 <div>
     <div class="row">
         <div class="col-md-8">
@@ -19,28 +16,38 @@
 
                 <div class="col-md-4">
 
-                    <select asp-items="@categories" name="CategoryId" id="selCategory" class="btn btn-primary dropdown-toggle" required>
+                    <select onchange="myFunction()" asp-items="@categories" name="CategoryId" id="selCategory" class="btn btn-primary dropdown-toggle" required>
                         <option value="" selected disabled>--Select a Category--</option>
                     </select>
+                    <p id="CatSubcat"></p>
                 </div>
                 <div class="col-md-4">
 
-                    <select name="SubCategoryId" id="selSubCategory" class="btn btn-primary dropdown-toggle" required>
+                    <select onchange="myFunction1()" name="SubCategoryId" id="selSubCategory" class="btn btn-primary dropdown-toggle" required>
                         <option value="Subcategory">--Select a SubCategory--</option>
                     </select>
+                    <p id="CatSubcat1"></p>
 
                 </div>
-       
-        <div class="row">
-            <input type="submit" value="Search" class="btn btn-danger" />
+
+                <div class="row">
+                    <input type="submit" value="Search" class="btn btn-danger" />
+                </div>
+
+            </form>
         </div>
 
-        </form>
     </div>
 
-    </div>
+  
    
+
 </div>
+
+@*<div style="padding-top:50px; padding-left:50px" > <h2>New arrivals <span class="spin"></span></h2></div>*@
+
+
+
 <br /><br /><br /><br /><br /><br /><br /><br />
 <div>
     <marquee behavior="scroll" direction="left">
@@ -49,6 +56,19 @@
 </div>
 @section Scripts {
     <script>
+
+        function myFunction() {
+            var x = document.getElementById("selCategory");
+            
+            document.getElementById("CatSubcat").innerHTML = "You Are Searching For- " + x.options[x.selectedIndex].innerText;
+        }
+
+        function myFunction1() {
+            var x = document.getElementById("selSubCategory");
+
+            document.getElementById("CatSubcat1").innerHTML = "You selected: " + x.options[x.selectedIndex].innerText;
+        }
+
         /*
                       Ajax stands for Asynchronous Javascript and XML.
                       It is used to make asynchronous HTTP Requests to the server without posting the page
@@ -96,7 +116,5 @@
             });
         });
     </script>
-
 }
-
 

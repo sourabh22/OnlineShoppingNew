@@ -14,7 +14,7 @@ namespace OnlineShoppingTests
     [TestClass]
     public class OnlineShoppintTests
     {
-        static int CustomerId;
+        static int CustomerId=0;
         AdminServiceController controllerservice;
         SearchServiceController controller;
         AdminController controller1;
@@ -163,11 +163,24 @@ namespace OnlineShoppingTests
 
         }
 
-        [TestMethod]
-        public void PlaceorderTestMethod()
-        {
-           
-        }
+//        [TestMethod]
+//        public void PlaceorderTestMethod()
+//        {
+//            OrderFinalDetails obj = new OrderFinalDetails()
+//            {
+//                PaymentMode = "COD",
+//            Products = new ProductViewModelCart[]
+//            {
+//                new ProductViewModelCart()
+//                {
+//ProductId=100,
+//Title="Book",
+//CategoryId=100,
+//SubCategoryId=
+//                }
+//            }
+//            };
+//        }
 
 
 
@@ -179,9 +192,12 @@ namespace OnlineShoppingTests
         [ClassCleanup]
         public static void CleanUp()
         {
-            var customer=context.Customer.SingleOrDefault(c => c.CustomerId == CustomerId);
-            context.Customer.Remove(customer);
-            context.SaveChanges();
+            if (CustomerId != 0)
+            {
+                var customer = context.Customer.SingleOrDefault(c => c.CustomerId == CustomerId);
+                context.Customer.Remove(customer);
+                context.SaveChanges();
+            }
         }
        
     }

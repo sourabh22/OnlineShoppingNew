@@ -59,6 +59,11 @@ namespace OnlineShoppingApplication.Models
             return result;
         }
 
+        public bool IsCartValid()
+        { byte[] ary;
+           bool result=  context.Session.TryGetValue("Cart", out ary);
+            return result;
+        }
 
     }
 }

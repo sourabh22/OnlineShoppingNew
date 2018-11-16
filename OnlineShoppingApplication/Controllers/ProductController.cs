@@ -122,6 +122,13 @@ namespace OnlineShoppingApplication.Controllers
             ViewData["products"]= products;
             return View("ProductCart");
         }
+        public bool IsCartValid()
+        {
+            ProductService productService = new ProductService();
+            productService.context = HttpContext;
+            return productService.IsCartValid();
+
+        }
         public IActionResult OrderView()
         {
             return View();
