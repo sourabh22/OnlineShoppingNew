@@ -8,7 +8,56 @@ body {
 }
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
+#spin {
+    color: red;
+}
 
+    #spin:after {
+        content: "";
+        animation: spin 50s linear infinite;
+    }
+
+@keyframes spin {
+    0% {
+        content: "Nike-Shoes 20% OFF";
+   }
+
+    10% {
+        content: "Roadster Casual 30% OFF";
+     }
+
+    20% {
+        content: "Crew 15% FLAT";
+    }
+    20% {
+        content: "Nike Buy 1 Get 1";
+    }
+    30% {
+        content: "Roadster Casual 30% OFF";
+    }
+    40% {
+        content: "Nike-Shoes 20% OFF";
+    }
+    50% {
+        content: "Crew 15% FLAT";
+    }
+    60% {
+        content: "Roadster Casual 30% OFF";
+    }
+    70% {
+        content: "Nike-Shoes 20% OFF";
+    }
+    80% {
+        content: "Crew 15% FLAT";
+    }
+
+    100% {
+        content: "Nike Buy 1 Get 1";
+    }
+
+   
+
+}
 
 .table1 {
     border-top: 2px;
