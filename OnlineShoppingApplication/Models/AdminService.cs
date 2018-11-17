@@ -18,11 +18,19 @@ namespace OnlineShoppingApplication.Models
             client = new HttpClient();
             client.BaseAddress = new Uri("http://localhost:65141/");
         }
-        public void SignUp(Customer customer)
+        public int SignUp(Customer customer)
         {
             string json = JsonConvert.SerializeObject(customer);
             HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
             HttpResponseMessage response = client.PostAsync("AdminService/SignUp", content).Result;
+
+            if (response.IsSuccessStatusCode == true)
+            {
+                
+                return 1;
+            }
+
+            return 0;
         }
 
         public int Authenticate(Credentials credentials)

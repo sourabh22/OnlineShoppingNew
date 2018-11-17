@@ -50,26 +50,27 @@
                         <form asp-action="signup" asp-controller="Admin" method="post">
                             <div class="form-group">
                                 <label for="fname">First Name</label>
-                                <input type="text"  class="form-control" asp-for="Name" placeholder="Enter Your Name" autofocus required >
+                                <input type="text" class="form-control" asp-for="Name" placeholder="Enter Your Name" autofocus required>
                             </div>
                             <div class="form-group">
-                                <label for="lname">Email</label>
-                                <input type="Email"  class="form-control" asp-for="Email" placeholder="Enter Your Email" required>
+                                <label for="lname"><span>Email</span></label>
+                                <input type="Email" class="form-control" asp-for="Email" placeholder="Enter Your Email" required>
                             </div>
-
                             <div class="form-group">
                                 <label for="gender">Password</label>
-                                <input type="password"  class="form-control" asp-for="Password" placeholder="Create Password" required>
+                                <input type="password" class="form-control" asp-for="Password" placeholder="Create Password" required>
                             </div>
                             <div class="form-group">
                                 <label for="emailaddr">Address</label>
-                                <input type="text"  class="form-control" asp-for="Address " placeholder="Enter Your Address" required>
+                                <input type="text" class="form-control" asp-for="Address " placeholder="Enter Your Address" required>
                             </div>
                             <div class="form-group">
                                 <label for="password">Contact-Number</label>
-                                <input type="password"  class="form-control" asp-for="Phone " placeholder="Enter Phone" required>
+                                <input type="password" class="form-control" asp-for="Phone " placeholder="Enter Phone" required>
                             </div>
-
+                            <div class="form-group text-danger" asp-validation-summary="All" >
+                                
+                            </div>
                             <div class="form-group text-center">
                                 <button type="submit" class="btn btn-primary btn-lg" value="submit">Sign up!</button>
                             </div>

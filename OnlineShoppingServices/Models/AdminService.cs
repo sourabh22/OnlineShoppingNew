@@ -12,18 +12,29 @@ namespace OnlineShoppingServices.Models
 
     {
         OnlineShoppingDbContext context;
+
         public AdminService()
         {
             context = new OnlineShoppingDbContext();
         }
-        
+
 
         public int SignUp(Customer customer)
         {
-            context.Customer.Add(customer);
-            int entry=context.SaveChanges();
-            return entry;
+            var result = (from c in context.Customer where c.Email == customer.Email select c).Any();
+            var check = result;
+
+            if (check == false)
+            {
+                context.Customer.Add(customer);
+                int entry = context.SaveChanges();
+                return entry;
+            }
+
+            return 0 ;
+           
         }
+
         public int Authenticate(Credentials credentials)
         {
             var result = (from c in context.Customer

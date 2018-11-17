@@ -26,7 +26,12 @@ namespace OnlineShoppingServices.Controllers
         public IActionResult SignUp(Customer customer)
         {
             service = new AdminService();
+            
             int result = service.SignUp(customer);
+            if (result == 0)
+            {
+                return NotFound(result);
+            }
 
             return Ok(result);
         }

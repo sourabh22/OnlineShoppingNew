@@ -53,6 +53,8 @@ namespace OnlineShoppingServices.Controllers
         public IActionResult GetProducts(Subcategory subCategory)
         {
             var result = service.GetProducts(subCategory);
+
+            //Controll will Redirect to SearchserviceService
             return Ok(result);
         }
 

@@ -51,8 +51,10 @@ namespace OnlineShoppingApplication.Models
             HttpResponseMessage response = client.PostAsync("Search/GetProducts",content).Result;
              json = response.Content.ReadAsStringAsync().Result;
              List<OnlineShoppingServices.Models.DB.Product > products = JsonConvert.DeserializeObject<List<Product >>(json);
+            //Controll will Redirect to SearchService Controller...
             return products;
 
+            
         }
 
         [ErrorFilter]

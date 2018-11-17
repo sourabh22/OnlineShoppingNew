@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OnlineShoppingApplication.Controllers;
 using OnlineShoppingLibrary;
@@ -20,43 +21,45 @@ namespace OnlineShoppingTests
         AdminController controller1;
         ProductserviceController proservice;
         static  OnlineShoppingDbContext context;
-
+        NullLogger<AdminController> logger;
 
         public OnlineShoppintTests()
         {
+            logger = new NullLogger<AdminController>();
             context = new OnlineShoppingDbContext();
            controller = new SearchServiceController(context);
-            controller1 = new AdminController();
+            controller1 = new AdminController(logger);
             proservice = new ProductserviceController();
             controllerservice = new AdminServiceController();
         }
+        [TestMethod]
+        public void GetCategoryTest()
+        {
+            var result = controller.GetCategories();
+            Assert.IsNotNull(result);
+        }
+        [TestMethod]
+        [TestCategory("SubcategoryTest")]
+        public void GetSubCategoryOnValidcategoryIdTest()
+        {
+            var result = controller.GetSubCategories(100);
+            Assert.IsNotNull(result);
+        }
+        [TestMethod]
+        [TestCategory("SubcategoryTest")]
+        public void GetSubCategoryOnInvalidcategoryIdTest()
+        {
+            var result = controller.GetSubCategories(1000);
+            Assert.AreEqual(0, result.Count);
+        }
         //[TestMethod]
-        //public void GetCategoryTest()
-        //{
-        //    var result=controller.GetCategories();
-        //    Assert.IsNotNull(result);
-        //}
-        //[TestMethod]
-        //[TestCategory("SubcategoryTest")]
-        //public void GetSubCategoryOnValidcategoryIdTest()
-        //{
-        //   var result = controller.GetSubCategories(100);
-        //    Assert.IsNotNull(result);
-        //}
-        //[TestMethod]
-        //[TestCategory("SubcategoryTest")]
-        //public void GetSubCategoryOnInvalidcategoryIdTest()
-        //{
-        //    var result = controller.GetSubCategories(1000);
-        //    Assert.AreEqual(0, result.Count);
-        //}
-        //[TestMethod]
-      
+
         //public void GetProductsTest()
         //{
-        //    Subcategory subCategory = new Subcategory() {
-        //         CategoryId=101,
-        //         SubCategoryId=105
+        //    Subcategory subCategory = new Subcategory()
+        //    {
+        //        CategoryId = 101,
+        //        SubCategoryId = 105
         //    };
         //    var result = controller.GetProducts(subCategory);
         //    Assert.AreEqual(2, result.Count);
@@ -72,7 +75,7 @@ namespace OnlineShoppingTests
                 Phone = "6766736747",
                 Password = "123"
             };
-            var result = (ViewResult)controller1.Signup(obj) ;
+            var result = (ViewResult)controller1.Signup(obj);
             CustomerId = obj.CustomerId;
             Assert.IsInstanceOfType(result, typeof(ViewResult));
 
@@ -163,24 +166,28 @@ namespace OnlineShoppingTests
 
         }
 
-//        [TestMethod]
-//        public void PlaceorderTestMethod()
-//        {
-//            OrderFinalDetails obj = new OrderFinalDetails()
-//            {
-//                PaymentMode = "COD",
-//            Products = new ProductViewModelCart[]
-//            {
-//                new ProductViewModelCart()
-//                {
-//ProductId=100,
-//Title="Book",
-//CategoryId=100,
-//SubCategoryId=
-//                }
-//            }
-//            };
-//        }
+        //[TestMethod]
+        //public void PlaceorderTestMethod()
+        //{
+        //    OrderFinalDetails obj = new OrderFinalDetails()
+        //    {
+        //        PaymentMode = "COD",
+        //        Products = new ProductViewModelCart[]
+        //    {
+        //        new ProductViewModelCart()
+        //        {
+
+        //               Title="Book",
+        //              CategoryId=100,
+        //              SubCategoryId=100,
+        //                Price=234324,
+        //                 Quantity=22,}
+        //    },
+        //        Cid = 1008,
+        //    };
+        //    var result = proservice.PlaceOrder(obj);
+        //    Assert.IsInstanceOfType(result, typeof(OkObjectResult));
+        //}
 
 
 

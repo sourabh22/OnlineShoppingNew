@@ -23,15 +23,17 @@
         </div>
         <!-- Login Form -->
         <form asp-action="Authenticate" asp-controller="Admin" method="post">
-            <input asp-for="Email" type="text" id="login" class="fadeIn second" name="login" placeholder="username" value="noopur123@gmail.com">
-            <input asp-for="Password" type="text" id="password" class="fadeIn third" name="login" placeholder="password" value="123">
+            <input asp-for="Email" type="text" id="login" class="fadeIn second "  placeholder="username" value="noopur123@gmail.com" required>
+            <input asp-for="Password" type="password" id="password" class="fadeIn third "  placeholder="password" value="123" required autofocus>
             <input type="submit" class="fadeIn fourth" value="Log In">
         </form>
         <!-- Remind Passowrd -->
         <div id="formFooter">
-            <a class="underlineHover" href="#">Go to the Site</a>
+            <a class="underlineHover" href="#">You Are visiting Online Shopping.</a>
         </div>
     </div>
 </div>
+
+
 <link href="~/css/login.css" rel="stylesheet" />
 
