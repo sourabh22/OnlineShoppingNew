@@ -23,8 +23,11 @@
         </div>
         <!-- Login Form -->
         <form asp-action="Authenticate" asp-controller="Admin" method="post">
-            <input asp-for="Email" type="text" id="login" class="fadeIn second "  placeholder="username" value="noopur123@gmail.com" required>
-            <input asp-for="Password" type="password" id="password" class="fadeIn third "  placeholder="password" value="123" required autofocus>
+            <input asp-for="Email" type="text" id="login" class="fadeIn second " placeholder="username" value="noopur123@gmail.com" required>
+            <input asp-for="Password" type="password" id="password" class="fadeIn third " placeholder="password" value="123" required autofocus>
+            <div class="form-group text-danger" asp-validation-summary="All">
+
+            </div>
             <input type="submit" class="fadeIn fourth" value="Log In">
         </form>
         <!-- Remind Passowrd -->
